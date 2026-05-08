@@ -16,11 +16,10 @@ import time
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
     try:
-        # GPU動的メモリ割り当て設定
         for gpu in gpus:
             tf.config.experimental.set_memory_growth(gpu, True)
         
-        # 使用GPUを明示指定する場合（複数GPUがある場合用）
+        # 使用GPUを明示した指定する場合は使ってちょ（複数GPUがある場合用）
         # tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
         
         print(f"GPU available: {len(gpus)} device(s)")
@@ -94,10 +93,10 @@ class KerasPilot(ABC):
         pass
 
     def compile(self) -> None:
-    # GPUがある場合、混合精度トレーニングを適用
+    # 混合精度トレーニング
         gpus = tf.config.experimental.list_physical_devices('GPU')
         if gpus:
-        # 混合精度設定（T4 GPUで高速化）
+        # 混合精度の設定用
             policy = tf.keras.mixed_precision.Policy('mixed_float16')
             tf.keras.mixed_precision.set_global_policy(policy)
             logger.info("Using mixed precision training (float16)")
@@ -120,7 +119,7 @@ class KerasPilot(ABC):
         self.interpreter.set_optimizer(optimizer)
 
     def get_input_shape(self, input_name):
-    # TF 2.18対応版
+    # TensorFlow 2.18用に書き換えたよん
         if hasattr(self.model, 'inputs'):
             for inp in self.model.inputs:
                 if inp.name.split('/')[0].split(':')[0] == input_name:

@@ -43,7 +43,7 @@ from donkeycar.utils import *
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-# manage.py に追加するコード
+#add
 
 def tune(cfg, tub_names, model_name, type="linear", trials=20):
     """
@@ -58,7 +58,7 @@ def tune(cfg, tub_names, model_name, type="linear", trials=20):
     import matplotlib.pyplot as plt
     import pandas as pd
     
-    # Donkeycarの必要なモジュールをインポート
+    # add
     from donkeycar.utils import get_model_by_type, normalize_image
     from donkeycar.pipeline.training import train
     

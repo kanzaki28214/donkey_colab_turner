@@ -143,11 +143,10 @@ class KerasInterpreter(Interpreter):
         self.model = pilot.create_model()
         
     
-    # TensorFlow 2.18対応版
+    # TensorFlow 2.18用に書き換えたよん
         if hasattr(self.model, 'input_names'):
             self.input_keys = self.model.input_names
         else:
-        # 入力層の名前を取得する代替方法
             self.input_keys = [input_layer.name.split('/')[0].split(':')[0] 
                             for input_layer in self.model.inputs]
         self.output_keys = self.model.output_names
