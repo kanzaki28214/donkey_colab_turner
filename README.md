@@ -1,4 +1,4 @@
-# Donkey_Colab_Turner
+# Donkey_Colab_Tuner
 donkeycar5.1.0に対応したハイパーパラーメータチューニング用プログラムです
 環境はGoogleColabを想定しています
 
